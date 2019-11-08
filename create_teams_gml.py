@@ -2,6 +2,9 @@ from unidecode import unidecode
 import os
 import pandas as pd
 from statistics import mean
+import collections
+import operator
+
 
 
 teamsA2016= []
@@ -53,7 +56,145 @@ shots_mediaB2019={}
 shots_mediaB2018={}
 shots_mediaB2017={}
 shots_mediaB2016={}
+shots_acc_mediaA2019={}
+shots_acc_mediaA2018={}
+shots_acc_mediaA2017={}
+shots_acc_mediaA2016={}
+shots_acc_mediaB2019={}
+shots_acc_mediaB2018={}
+shots_acc_mediaB2017={}
+shots_acc_mediaB2016={}
+shots_acc_porc_mediaA2019={}
+shots_acc_porc_mediaA2018={}
+shots_acc_porc_mediaA2017={}
+shots_acc_porc_mediaA2016={}
+shots_acc_porc_mediaB2019={}
+shots_acc_porc_mediaB2018={}
+shots_acc_porc_mediaB2017={}
+shots_acc_porc_mediaB2016={}
+passes_mediaA2019={}
+passes_mediaA2018={}
+passes_mediaA2017={}
+passes_mediaA2016={}
+passes_mediaB2019={}
+passes_mediaB2018={}
+passes_mediaB2017={}
+passes_mediaB2016={}
+passes_acc_mediaA2019={}
+passes_acc_mediaA2018={}
+passes_acc_mediaA2017={}
+passes_acc_mediaA2016={}
+passes_acc_mediaB2019={}
+passes_acc_mediaB2018={}
+passes_acc_mediaB2017={}
+passes_acc_mediaB2016={}
+passes_acc_porc_mediaA2019={}
+passes_acc_porc_mediaA2018={}
+passes_acc_porc_mediaA2017={}
+passes_acc_porc_mediaA2016={}
+passes_acc_porc_mediaB2019={}
+passes_acc_porc_mediaB2018={}
+passes_acc_porc_mediaB2017={}
+passes_acc_porc_mediaB2016={}
+possesion_mediaA2019={}
+possesion_mediaA2018={}
+possesion_mediaA2017={}
+possesion_mediaA2016={}
+possesion_mediaB2019={}
+possesion_mediaB2018={}
+possesion_mediaB2017={}
+possesion_mediaB2016={}
+losses_mediaA2019={}
+losses_mediaA2018={}
+losses_mediaA2017={}
+losses_mediaA2016={}
+losses_mediaB2019={}
+losses_mediaB2018={}
+losses_mediaB2017={}
+losses_mediaB2016={}
+losses_low_mediaA2019={}
+losses_low_mediaA2018={}
+losses_low_mediaA2017={}
+losses_low_mediaA2016={}
+losses_low_mediaB2019={}
+losses_low_mediaB2018={}
+losses_low_mediaB2017={}
+losses_low_mediaB2016={}
+losses_medium_mediaA2019={}
+losses_medium_mediaA2018={}
+losses_medium_mediaA2017={}
+losses_medium_mediaA2016={}
+losses_medium_mediaB2019={}
+losses_medium_mediaB2018={}
+losses_medium_mediaB2017={}
+losses_medium_mediaB2016={}
+losses_high_mediaA2019={}
+losses_high_mediaA2018={}
+losses_high_mediaA2017={}
+losses_high_mediaA2016={}
+losses_high_mediaB2019={}
+losses_high_mediaB2018={}
+losses_high_mediaB2017={}
+losses_high_mediaB2016={}
+recoveries_mediaA2019={}
+recoveries_mediaA2018={}
+recoveries_mediaA2017={}
+recoveries_mediaA2016={}
+recoveries_mediaB2019={}
+recoveries_mediaB2018={}
+recoveries_mediaB2017={}
+recoveries_mediaB2016={}
+recoveries_low_mediaA2019={}
+recoveries_low_mediaA2018={}
+recoveries_low_mediaA2017={}
+recoveries_low_mediaA2016={}
+recoveries_low_mediaB2019={}
+recoveries_low_mediaB2018={}
+recoveries_low_mediaB2017={}
+recoveries_low_mediaB2016={}
+recoveries_medium_mediaA2019={}
+recoveries_medium_mediaA2018={}
+recoveries_medium_mediaA2017={}
+recoveries_medium_mediaA2016={}
+recoveries_medium_mediaB2019={}
+recoveries_medium_mediaB2018={}
+recoveries_medium_mediaB2017={}
+recoveries_medium_mediaB2016={}
+recoveries_high_mediaA2019={}
+recoveries_high_mediaA2018={}
+recoveries_high_mediaA2017={}
+recoveries_high_mediaA2016={}
+recoveries_high_mediaB2019={}
+recoveries_high_mediaB2018={}
+recoveries_high_mediaB2017={}
+recoveries_high_mediaB2016={}
+chalenges_mediaA2019={}
+chalenges_mediaA2018={}
+chalenges_mediaA2017={}
+chalenges_mediaA2016={}
+chalenges_mediaB2019={}
+chalenges_mediaB2018={}
+chalenges_mediaB2017={}
+chalenges_mediaB2016={}
+chalenges_won_mediaA2019={}
+chalenges_won_mediaA2018={}
+chalenges_won_mediaA2017={}
+chalenges_won_mediaA2016={}
+chalenges_won_mediaB2019={}
+chalenges_won_mediaB2018={}
+chalenges_won_mediaB2017={}
+chalenges_won_mediaB2016={}
+rankingA2019={}
+rankingA2018={}
+rankingA2017={}
+rankingA2016={}
+rankingB2019={}
+rankingB2018={}
+rankingB2017={}
+rankingB2016={}
+
 dicD={}
+
 
 
 def get_media(column):
@@ -65,7 +206,78 @@ def get_media(column):
 			if indx%2 == 0:
 				lista.append(x)
 	media = mean(lista)
-	return media
+	return round(media,2)
+
+def write_media(dic,string,file):
+	for key in dic:
+		if y in key:
+			file.write('\t\tmedia_{0} '.format(string)+'\"'+unidecode(str(dic[key]))+'\"'+'\n')
+def write_ranking(dic,file):
+	for key in dic:
+		if y in key:
+			file.write('\t\tposicao'+'\"'+unidecode(str(dic[key]))+'\"'+'\n')
+
+rankingA2016['Palmeiras']=1
+rankingA2016['Santos']=2
+rankingA2016['Flamengo']=3
+rankingA2016['Atlético Mineiro']=4
+rankingA2016['Botafogo']=5
+rankingA2016['Athletico Paranaense']=6
+rankingA2016['Corinthians']=7
+rankingA2016['Ponte Preta']=8
+rankingA2016['Grêmio']=9
+rankingA2016['São Paulo']=10
+rankingA2016['Chapecoense']=11
+rankingA2016['Cruzeiro']=12
+rankingA2016['Fluminense']=13
+rankingA2016['Sport Recife']=14
+rankingA2016['Coritiba']=15
+rankingA2016['Vitória']=16
+rankingA2016['Internacional']=17
+rankingA2016['Figueirense']=18
+rankingA2016['Santa Cruz']=19
+rankingA2016['América Mineiro']=20
+rankingA2017['Corinthians']=1
+rankingA2017['Palmeiras']=2
+rankingA2017['Santos']=3
+rankingA2017['Grêmio']=4
+rankingA2017['Cruzeiro']=5
+rankingA2017['Flamengo']=6
+rankingA2017['Vasco da Gama']=7
+rankingA2017['Chapecoense']=8
+rankingA2017['Atlético Mineiro']=9
+rankingA2017['Botafogo']=10
+rankingA2017['Athletico Paranaense']=11
+rankingA2017['Bahia']=12
+rankingA2017['São Paulo']=13
+rankingA2017['Fluminense']=14
+rankingA2017['Sport Recife']=15
+rankingA2017['Vitória']=16
+rankingA2017['Coritiba']=17
+rankingA2017['Avaí']=18
+rankingA2017['Ponte Preta']=19
+rankingA2017['Atlético GO']=20
+rankingA2018['Palmeiras']=1
+rankingA2018['Flamengo']=2
+rankingA2018['Internacional']=3
+rankingA2018['Grêmio']=4
+rankingA2018['São Paulo']=5
+rankingA2018['Atlético Mineiro']=6
+rankingA2018['Athletico Paranaense']=7
+rankingA2018['Cruzeiro']=8
+rankingA2018['Botafogo']=9
+rankingA2018['Santos']=10
+rankingA2018['Bahia']=11
+rankingA2018['Fluminense']=12
+rankingA2018['Corinthians']=13
+rankingA2018['Chapecoense']=14
+rankingA2018['Ceará']=15
+rankingA2018['Vasco da Gama']=16
+rankingA2018['Sport Recife']=17
+rankingA2018['América Mineiro']=18
+rankingA2018['Vitória']=19
+rankingA2018['Paraná']=20
+
 
 count = 0
 os.chdir("teams" )
@@ -78,8 +290,23 @@ for filename in os.listdir(os.getcwd()):
 	date = sheetX['Date']
 	goals = sheetX['Goals']
 	match = sheetX['Match']
+	possesion = sheetX['Possession, %']
 	shots = sheetX['Shots / on target']
+	shots_target = sheetX['Unnamed: 9']
+	shots_target_porc = sheetX['Unnamed: 10']
 	passes = sheetX['Passes / accurate']
+	passes_acc = sheetX['Unnamed: 12']
+	passes_acc_porc = sheetX['Unnamed: 13']
+	losses = sheetX['Losses / Low / Medium / High']
+	losses_low = sheetX['Unnamed: 16']
+	losses_medium = sheetX['Unnamed: 17']
+	losses_high = sheetX['Unnamed: 18']
+	recoveries = sheetX['Recoveries / Low / Medium / High']
+	recoveries_low = sheetX['Unnamed: 20']
+	recoveries_medium = sheetX['Unnamed: 21']
+	recoveries_high = sheetX['Unnamed: 22']
+	chalenges = sheetX['Challenges / won']
+	chalenges_won = sheetX['Unnamed: 24']
 
 
 
@@ -87,7 +314,7 @@ for filename in os.listdir(os.getcwd()):
 	if competition[3] == 'Brazil. Serie A':
 		if '3' in filename:
 			fn = open('result_teams_brA2019.gml','w+')
-			print(filename)
+			#print(filename)
 			#print(shots[2:7])
 
 		elif '2' in filename:
@@ -186,183 +413,381 @@ for filename in os.listdir(os.getcwd()):
 	
 
 	if competition[3] == 'Brazil. Serie A' and '3' in filename:
-		'''
-		shots_team=[]
-		pass_team=[]
 		
-		for idg, p in enumerate(passes):
-			if str(p) == 'nan':
-				pass
-			else:
-				if idg%2 == 0:
-					pass_team.append(p)
-		media = mean(pass_team)
-		passes_mediaA2019[filename]=media
 
-		for idxz, i in enumerate(shots):
-			if str(i) == 'nan':
-				pass
-			else:
-				if idxz%2==0:
-					shots_team.append(i)
-		media = mean(shots_team)
-'''
 		shots_mediaA2019[filename]=get_media(shots)
+		passes_mediaA2019[filename]=get_media(passes)
+		shots_acc_mediaA2019[filename]=get_media(shots_target)
+		passes_acc_mediaA2019[filename]=get_media(passes_acc)
+		shots_acc_porc_mediaA2019[filename]=get_media(shots_target_porc)
+		passes_acc_porc_mediaA2019[filename]=get_media(passes_acc_porc)
+		possesion_mediaA2019[filename]=get_media(possesion)
+		losses_mediaA2019[filename]=get_media(losses)
+		losses_low_mediaA2019[filename]=get_media(losses_low)
+		losses_medium_mediaA2019[filename]=get_media(losses_medium)
+		losses_high_mediaA2019[filename]=get_media(losses_high)
+		recoveries_mediaA2019[filename]=get_media(recoveries)
+		recoveries_low_mediaA2019[filename]=get_media(recoveries_low)
+		recoveries_medium_mediaA2019[filename]=get_media(recoveries_medium)
+		recoveries_high_mediaA2019[filename]=get_media(recoveries_high)
+		chalenges_mediaA2019[filename]=get_media(chalenges)
+		chalenges_won_mediaA2019[filename]=get_media(chalenges_won)
+
+		
+		#print(collections.OrderedDict(sorted_x))
+
+
 		for idx, y in enumerate(teamsA2019):
+
 			dicA2019[unidecode(str(y))]=idx
+
 			fn.write('\tnode [\n')
 			fn.write('\t\tid '+str(idx)+'\n')
 			fn.write('\t\tlabel '+'\"'+unidecode(str(y))+'\"'+'\n')
-			for key in shots_mediaA2019:
-				if y in key:
-					fn.write('\t\tmedia '+'\"'+unidecode(str(shots_mediaA2019[key]))+'\"'+'\n')
+			write_media(shots_mediaA2019,'shots',fn)
+			write_media(passes_mediaA2019,'passes',fn)
+			write_media(shots_acc_mediaA2019,'shots_target',fn)
+			write_media(passes_acc_mediaA2019,'passes_acc',fn)
+			write_media(shots_acc_porc_mediaA2019,'shots_target_porc',fn)
+			write_media(passes_acc_porc_mediaA2019,'passes_acc_porc',fn)
+			write_media(possesion_mediaA2019,'possesion',fn)
+			write_media(losses_mediaA2019,'losses',fn)
+			write_media(losses_low_mediaA2019,'losses_low',fn)
+			write_media(losses_medium_mediaA2019,'losses_medium',fn)
+			write_media(losses_high_mediaA2019,'losses_high',fn)
+			write_media(recoveries_mediaA2019,'recoveries',fn)
+			write_media(recoveries_low_mediaA2019,'recoveries_low',fn)
+			write_media(recoveries_medium_mediaA2019,'recoveries_medium',fn)
+			write_media(recoveries_high_mediaA2019,'recoveries_high',fn)
+			write_media(chalenges_mediaA2019,'chalenges',fn)
+			write_media(chalenges_won_mediaA2019,'chalenges_won',fn)
 			fn.write('\t]\n')
+
 	elif competition[3] == 'Brazil. Serie A' and '2' in filename:
-		'''
-		shots_team=[]
-		for idxz, i in enumerate(shots):
-			if str(i) == 'nan':
-				pass
-			else:
-				if idxz%2==0:
-					shots_team.append(i)
-		media = mean(shots_team)
-		'''
+
 		shots_mediaA2018[filename]=get_media(shots)
+		passes_mediaA2018[filename]=get_media(passes)
+		shots_acc_mediaA2018[filename]=get_media(shots_target)
+		passes_acc_mediaA2018[filename]=get_media(passes_acc)
+		shots_acc_porc_mediaA2018[filename]=get_media(shots_target_porc)
+		passes_acc_porc_mediaA2018[filename]=get_media(passes_acc_porc)
+		possesion_mediaA2018[filename]=get_media(possesion)
+		losses_mediaA2018[filename]=get_media(losses)
+		losses_low_mediaA2018[filename]=get_media(losses_low)
+		losses_medium_mediaA2018[filename]=get_media(losses_medium)
+		losses_high_mediaA2018[filename]=get_media(losses_high)
+		recoveries_mediaA2018[filename]=get_media(recoveries)
+		recoveries_low_mediaA2018[filename]=get_media(recoveries_low)
+		recoveries_medium_mediaA2018[filename]=get_media(recoveries_medium)
+		recoveries_high_mediaA2018[filename]=get_media(recoveries_high)
+		chalenges_mediaA2018[filename]=get_media(chalenges)
+		chalenges_won_mediaA2018[filename]=get_media(chalenges_won)
+
+		
+
 		for idx, y in enumerate(teamsA2018):
+
 			dicA2018[unidecode(str(y))]=idx
+
 			fn.write('\tnode [\n')
 			fn.write('\t\tid '+str(idx)+'\n')
-			for key in shots_mediaA2018:
-				if y in key:
-					fn.write('\t\tmedia '+'\"'+unidecode(str(shots_mediaA2018[key]))+'\"'+'\n')
 			fn.write('\t\tlabel '+'\"'+unidecode(str(y))+'\"'+'\n')
+			write_media(shots_mediaA2018,'shots',fn)
+			write_media(passes_mediaA2018,'passes',fn)
+			write_media(shots_acc_mediaA2018,'shots_target',fn)
+			write_media(passes_acc_mediaA2018,'passes_acc',fn)
+			write_media(shots_acc_porc_mediaA2018,'shots_target_porc',fn)
+			write_media(passes_acc_porc_mediaA2018,'passes_acc_porc',fn)
+			write_media(possesion_mediaA2018,'possesion',fn)
+			write_media(losses_mediaA2018,'losses',fn)
+			write_media(losses_low_mediaA2018,'losses_low',fn)
+			write_media(losses_medium_mediaA2018,'losses_medium',fn)
+			write_media(losses_high_mediaA2018,'losses_high',fn)
+			write_media(recoveries_mediaA2018,'recoveries',fn)
+			write_media(recoveries_low_mediaA2018,'recoveries_low',fn)
+			write_media(recoveries_medium_mediaA2018,'recoveries_medium',fn)
+			write_media(recoveries_high_mediaA2018,'recoveries_high',fn)
+			write_media(chalenges_mediaA2018,'chalenges',fn)
+			write_media(chalenges_won_mediaA2018,'chalenges_won',fn)
+			fn.write('\t\tposition '+'\"'+unidecode(str(rankingA2018[y]))+'\"'+'\n')
 			fn.write('\t]\n')
+
 	elif competition[3] == 'Brazil. Serie A' and '1' in filename:
-		'''
-		shots_team=[]
-		for idxz, i in enumerate(shots):
-			if str(i) == 'nan':
-				pass
-			else:
-				if idxz%2==0:
-					shots_team.append(i)
-		media = mean(shots_team)
-		'''
+
 		shots_mediaA2017[filename]=get_media(shots)
+		passes_mediaA2017[filename]=get_media(passes)
+		shots_acc_mediaA2017[filename]=get_media(shots_target)
+		passes_acc_mediaA2017[filename]=get_media(passes_acc)
+		shots_acc_porc_mediaA2017[filename]=get_media(shots_target_porc)
+		passes_acc_porc_mediaA2017[filename]=get_media(passes_acc_porc)
+		possesion_mediaA2017[filename]=get_media(possesion)
+		losses_mediaA2017[filename]=get_media(losses)
+		losses_low_mediaA2017[filename]=get_media(losses_low)
+		losses_medium_mediaA2017[filename]=get_media(losses_medium)
+		losses_high_mediaA2017[filename]=get_media(losses_high)
+		recoveries_mediaA2017[filename]=get_media(recoveries)
+		recoveries_low_mediaA2017[filename]=get_media(recoveries_low)
+		recoveries_medium_mediaA2017[filename]=get_media(recoveries_medium)
+		recoveries_high_mediaA2017[filename]=get_media(recoveries_high)
+		chalenges_mediaA2017[filename]=get_media(chalenges)
+		chalenges_won_mediaA2017[filename]=get_media(chalenges_won)
+
 		for idx, y in enumerate(teamsA2017):
+
 			dicA2017[unidecode(str(y))]=idx
+
 			fn.write('\tnode [\n')
 			fn.write('\t\tid '+str(idx)+'\n')
-			for key in shots_mediaA2017:
-				if y in key:
-					fn.write('\t\tmedia '+'\"'+unidecode(str(shots_mediaA2017[key]))+'\"'+'\n')
 			fn.write('\t\tlabel '+'\"'+unidecode(str(y))+'\"'+'\n')
+			write_media(shots_mediaA2017,'shots',fn)
+			write_media(passes_mediaA2017,'passes',fn)
+			write_media(shots_acc_mediaA2017,'shots_target',fn)
+			write_media(passes_acc_mediaA2017,'passes_acc',fn)
+			write_media(shots_acc_porc_mediaA2017,'shots_target_porc',fn)
+			write_media(passes_acc_porc_mediaA2017,'passes_acc_porc',fn)
+			write_media(possesion_mediaA2017,'possesion',fn)
+			write_media(losses_mediaA2017,'losses',fn)
+			write_media(losses_low_mediaA2017,'losses_low',fn)
+			write_media(losses_medium_mediaA2017,'losses_medium',fn)
+			write_media(losses_high_mediaA2017,'losses_high',fn)
+			write_media(recoveries_mediaA2017,'recoveries',fn)
+			write_media(recoveries_low_mediaA2017,'recoveries_low',fn)
+			write_media(recoveries_medium_mediaA2017,'recoveries_medium',fn)
+			write_media(recoveries_high_mediaA2017,'recoveries_high',fn)
+			write_media(chalenges_mediaA2017,'chalenges',fn)
+			write_media(chalenges_won_mediaA2017,'chalenges_won',fn)
+			fn.write('\t\tposition '+'\"'+unidecode(str(rankingA2017[y]))+'\"'+'\n')
 			fn.write('\t]\n')
 	elif competition[3] == 'Brazil. Serie A' and '3' not in filename and '2'not in filename and '1'not in filename:
-		'''
-		shots_team=[]
-		for idxz, i in enumerate(shots):
-			if str(i) == 'nan':
-				pass
-			else:
-				if idxz%2==0:
-					shots_team.append(i)
-		media = mean(shots_team)
-		'''
+
 		shots_mediaA2016[filename]=get_media(shots)
+		passes_mediaA2016[filename]=get_media(passes)
+		shots_acc_mediaA2016[filename]=get_media(shots_target)
+		passes_acc_mediaA2016[filename]=get_media(passes_acc)
+		shots_acc_porc_mediaA2016[filename]=get_media(shots_target_porc)
+		passes_acc_porc_mediaA2016[filename]=get_media(passes_acc_porc)
+		possesion_mediaA2016[filename]=get_media(possesion)
+		losses_mediaA2016[filename]=get_media(losses)
+		losses_low_mediaA2016[filename]=get_media(losses_low)
+		losses_medium_mediaA2016[filename]=get_media(losses_medium)
+		losses_high_mediaA2016[filename]=get_media(losses_high)
+		recoveries_mediaA2016[filename]=get_media(recoveries)
+		recoveries_low_mediaA2016[filename]=get_media(recoveries_low)
+		recoveries_medium_mediaA2016[filename]=get_media(recoveries_medium)
+		recoveries_high_mediaA2016[filename]=get_media(recoveries_high)
+		chalenges_mediaA2016[filename]=get_media(chalenges)
+		chalenges_won_mediaA2016[filename]=get_media(chalenges_won)
+
 		for idx, y in enumerate(teamsA2016):
+
 			dicA2016[unidecode(str(y))]=idx
+
 			fn.write('\tnode [\n')
 			fn.write('\t\tid '+str(idx)+'\n')
-			for key in shots_mediaA2016:
-				if y in key:
-					fn.write('\t\tmedia '+'\"'+unidecode(str(shots_mediaA2016[key]))+'\"'+'\n')
 			fn.write('\t\tlabel '+'\"'+unidecode(str(y))+'\"'+'\n')
+			write_media(shots_mediaA2016,'shots',fn)
+			write_media(passes_mediaA2016,'passes',fn)
+			write_media(shots_acc_mediaA2016,'shots_target',fn)
+			write_media(passes_acc_mediaA2016,'passes_acc',fn)
+			write_media(shots_acc_porc_mediaA2016,'shots_target_porc',fn)
+			write_media(passes_acc_porc_mediaA2016,'passes_acc_porc',fn)
+			write_media(possesion_mediaA2016,'possesion',fn)
+			write_media(losses_mediaA2016,'losses',fn)
+			write_media(losses_low_mediaA2016,'losses_low',fn)
+			write_media(losses_medium_mediaA2016,'losses_medium',fn)
+			write_media(losses_high_mediaA2016,'losses_high',fn)
+			write_media(recoveries_mediaA2016,'recoveries',fn)
+			write_media(recoveries_low_mediaA2016,'recoveries_low',fn)
+			write_media(recoveries_medium_mediaA2016,'recoveries_medium',fn)
+			write_media(recoveries_high_mediaA2016,'recoveries_high',fn)
+			write_media(chalenges_mediaA2016,'chalenges',fn)
+			write_media(chalenges_won_mediaA2016,'chalenges_won',fn)
+			write_media(chalenges_won_mediaA2016,'chalenges_won',fn)
+			fn.write('\t\tposition '+'\"'+unidecode(str(rankingA2016[y]))+'\"'+'\n')
 			fn.write('\t]\n')
 
 	elif competition[3] == 'Brazil. Serie B' and '3' in filename:
-		'''
-		shots_team=[]
-		for idxz, i in enumerate(shots):
-			if str(i) == 'nan':
-				pass
-			else:
-				if idxz%2==0:
-					shots_team.append(i)
-		media = mean(shots_team)
-		'''
+
 		shots_mediaB2019[filename]=get_media(shots)
+		passes_mediaB2019[filename]=get_media(passes)
+		shots_acc_mediaB2019[filename]=get_media(shots_target)
+		passes_acc_mediaB2019[filename]=get_media(passes_acc)
+		shots_acc_porc_mediaB2019[filename]=get_media(shots_target_porc)
+		passes_acc_porc_mediaB2019[filename]=get_media(passes_acc_porc)
+		possesion_mediaB2019[filename]=get_media(possesion)
+		losses_mediaB2019[filename]=get_media(losses)
+		losses_low_mediaB2019[filename]=get_media(losses_low)
+		losses_medium_mediaB2019[filename]=get_media(losses_medium)
+		losses_high_mediaB2019[filename]=get_media(losses_high)
+		recoveries_mediaB2019[filename]=get_media(recoveries)
+		recoveries_low_mediaB2019[filename]=get_media(recoveries_low)
+		recoveries_medium_mediaB2019[filename]=get_media(recoveries_medium)
+		recoveries_high_mediaB2019[filename]=get_media(recoveries_high)
+		chalenges_mediaB2019[filename]=get_media(chalenges)
+		chalenges_won_mediaB2019[filename]=get_media(chalenges_won)
+
 		for idx, y in enumerate(teamsB2019):
+
 			dicB2019[unidecode(str(y))]=idx
+
 			fn.write('\tnode [\n')
 			fn.write('\t\tid '+str(idx)+'\n')
-			for key in shots_mediaB2019:
-				if y in key:
-					fn.write('\t\tmedia '+'\"'+unidecode(str(shots_mediaB2019[key]))+'\"'+'\n')
 			fn.write('\t\tlabel '+'\"'+unidecode(str(y))+'\"'+'\n')
+			write_media(shots_mediaB2019,'shots',fn)
+			write_media(passes_mediaB2019,'passes',fn)
+			write_media(shots_acc_mediaB2019,'shots_target',fn)
+			write_media(passes_acc_mediaB2019,'passes_acc',fn)
+			write_media(shots_acc_porc_mediaB2019,'shots_target_porc',fn)
+			write_media(passes_acc_porc_mediaB2019,'passes_acc_porc',fn)
+			write_media(possesion_mediaB2019,'possesion',fn)
+			write_media(losses_mediaB2019,'losses',fn)
+			write_media(losses_low_mediaB2019,'losses_low',fn)
+			write_media(losses_medium_mediaB2019,'losses_medium',fn)
+			write_media(losses_high_mediaB2019,'losses_high',fn)
+			write_media(recoveries_mediaB2019,'recoveries',fn)
+			write_media(recoveries_low_mediaB2019,'recoveries_low',fn)
+			write_media(recoveries_medium_mediaB2019,'recoveries_medium',fn)
+			write_media(recoveries_high_mediaB2019,'recoveries_high',fn)
+			write_media(chalenges_mediaB2019,'chalenges',fn)
+			write_media(chalenges_won_mediaB2019,'chalenges_won',fn)
 			fn.write('\t]\n')	
-		#print('2019b')
+		
 	elif competition[3] == 'Brazil. Serie B' and '2' in filename:
-		'''
-		shots_team=[]
-		for idxz, i in enumerate(shots):
-			if str(i) == 'nan':
-				pass
-			else:
-				if idxz%2==0:
-					shots_team.append(i)
-		media = mean(shots_team)
-		'''
+	
 		shots_mediaB2018[filename]=get_media(shots)
+		passes_mediaB2018[filename]=get_media(passes)
+		shots_acc_mediaB2018[filename]=get_media(shots_target)
+		passes_acc_mediaB2018[filename]=get_media(passes_acc)
+		shots_acc_porc_mediaB2018[filename]=get_media(shots_target_porc)
+		passes_acc_porc_mediaB2018[filename]=get_media(passes_acc_porc)
+		possesion_mediaB2018[filename]=get_media(possesion)
+		losses_mediaB2018[filename]=get_media(losses)
+		losses_low_mediaB2018[filename]=get_media(losses_low)
+		losses_medium_mediaB2018[filename]=get_media(losses_medium)
+		losses_high_mediaB2018[filename]=get_media(losses_high)
+		recoveries_mediaB2018[filename]=get_media(recoveries)
+		recoveries_low_mediaB2018[filename]=get_media(recoveries_low)
+		recoveries_medium_mediaB2018[filename]=get_media(recoveries_medium)
+		recoveries_high_mediaB2018[filename]=get_media(recoveries_high)
+		chalenges_mediaB2018[filename]=get_media(chalenges)
+		chalenges_won_mediaB2018[filename]=get_media(chalenges_won)
+
 		for idx, y in enumerate(teamsB2018):
+
 			dicB2018[unidecode(str(y))]=idx
+
 			fn.write('\tnode [\n')
 			fn.write('\t\tid '+str(idx)+'\n')
-			for key in shots_mediaB2018:
-				if y in key:
-					fn.write('\t\tmedia '+'\"'+unidecode(str(shots_mediaB2018[key]))+'\"'+'\n')
 			fn.write('\t\tlabel '+'\"'+unidecode(str(y))+'\"'+'\n')
+			write_media(shots_mediaB2018,'shots',fn)
+			write_media(passes_mediaB2018,'passes',fn)
+			write_media(shots_acc_mediaB2018,'shots_target',fn)
+			write_media(passes_acc_mediaB2018,'passes_acc',fn)
+			write_media(shots_acc_porc_mediaB2018,'shots_target_porc',fn)
+			write_media(passes_acc_porc_mediaB2018,'passes_acc_porc',fn)
+			write_media(possesion_mediaB2018,'possesion',fn)
+			write_media(losses_mediaB2018,'losses',fn)
+			write_media(losses_low_mediaB2018,'losses_low',fn)
+			write_media(losses_medium_mediaB2018,'losses_medium',fn)
+			write_media(losses_high_mediaB2018,'losses_high',fn)
+			write_media(recoveries_mediaB2018,'recoveries',fn)
+			write_media(recoveries_low_mediaB2018,'recoveries_low',fn)
+			write_media(recoveries_medium_mediaB2018,'recoveries_medium',fn)
+			write_media(recoveries_high_mediaB2018,'recoveries_high',fn)
+			write_media(chalenges_mediaB2018,'chalenges',fn)
+			write_media(chalenges_won_mediaB2018,'chalenges_won',fn)
 			fn.write('\t]\n')
+
 	elif competition[3] == 'Brazil. Serie B' and '1' in filename:
-		shots_team=[]
-		for idxz, i in enumerate(shots):
-			if str(i) == 'nan':
-				pass
-			else:
-				if idxz%2==0:
-					shots_team.append(i)
-		media = mean(shots_team)
-		shots_mediaB2017[filename]=media
+
+		shots_mediaB2017[filename]=get_media(shots)
+		passes_mediaB2017[filename]=get_media(passes)
+		shots_acc_mediaB2017[filename]=get_media(shots_target)
+		passes_acc_mediaB2017[filename]=get_media(passes_acc)
+		shots_acc_porc_mediaB2017[filename]=get_media(shots_target_porc)
+		passes_acc_porc_mediaB2017[filename]=get_media(passes_acc_porc)
+		possesion_mediaB2017[filename]=get_media(possesion)
+		losses_mediaB2017[filename]=get_media(losses)
+		losses_low_mediaB2017[filename]=get_media(losses_low)
+		losses_medium_mediaB2017[filename]=get_media(losses_medium)
+		losses_high_mediaB2017[filename]=get_media(losses_high)
+		recoveries_mediaB2017[filename]=get_media(recoveries)
+		recoveries_low_mediaB2017[filename]=get_media(recoveries_low)
+		recoveries_medium_mediaB2017[filename]=get_media(recoveries_medium)
+		recoveries_high_mediaB2017[filename]=get_media(recoveries_high)
+		chalenges_mediaB2017[filename]=get_media(chalenges)
+		chalenges_won_mediaB2017[filename]=get_media(chalenges_won)
+
 		for idx, y in enumerate(teamsB2017):
+
 			dicB2017[unidecode(str(y))]=idx
+
 			fn.write('\tnode [\n')
 			fn.write('\t\tid '+str(idx)+'\n')
-			for key in shots_mediaB2017:
-				if y in key:
-					fn.write('\t\tmedia '+'\"'+unidecode(str(shots_mediaB2017[key]))+'\"'+'\n')
 			fn.write('\t\tlabel '+'\"'+unidecode(str(y))+'\"'+'\n')
+			write_media(shots_mediaB2017,'shots',fn)
+			write_media(passes_mediaB2017,'passes',fn)
+			write_media(shots_acc_mediaB2017,'shots_target',fn)
+			write_media(passes_acc_mediaB2017,'passes_acc',fn)
+			write_media(shots_acc_porc_mediaB2017,'shots_target_porc',fn)
+			write_media(passes_acc_porc_mediaB2017,'passes_acc_porc',fn)
+			write_media(possesion_mediaB2017,'possesion',fn)
+			write_media(losses_mediaB2017,'losses',fn)
+			write_media(losses_low_mediaB2017,'losses_low',fn)
+			write_media(losses_medium_mediaB2017,'losses_medium',fn)
+			write_media(losses_high_mediaB2017,'losses_high',fn)
+			write_media(recoveries_mediaB2017,'recoveries',fn)
+			write_media(recoveries_low_mediaB2017,'recoveries_low',fn)
+			write_media(recoveries_medium_mediaB2017,'recoveries_medium',fn)
+			write_media(recoveries_high_mediaB2017,'recoveries_high',fn)
+			write_media(chalenges_mediaB2017,'chalenges',fn)
+			write_media(chalenges_won_mediaB2017,'chalenges_won',fn)
 			fn.write('\t]\n')
+
 	elif competition[3] == 'Brazil. Serie B' and '3' not in filename and '2'not in filename and '1'not in filename:
-		'''
-		shots_team=[]
-		for idxz, i in enumerate(shots):
-			if str(i) == 'nan':
-				pass
-			else:
-				if idxz%2==0:
-					shots_team.append(i)
-		media = mean(shots_team)
-		'''
+	
 		shots_mediaB2016[filename]=get_media(shots)
+		passes_mediaB2016[filename]=get_media(passes)
+		shots_acc_mediaB2016[filename]=get_media(shots_target)
+		passes_acc_mediaB2016[filename]=get_media(passes_acc)
+		shots_acc_porc_mediaB2016[filename]=get_media(shots_target_porc)
+		passes_acc_porc_mediaB2016[filename]=get_media(passes_acc_porc)
+		possesion_mediaB2016[filename]=get_media(possesion)
+		losses_mediaB2016[filename]=get_media(losses)
+		losses_low_mediaB2016[filename]=get_media(losses_low)
+		losses_medium_mediaB2016[filename]=get_media(losses_medium)
+		losses_high_mediaB2016[filename]=get_media(losses_high)
+		recoveries_mediaB2016[filename]=get_media(recoveries)
+		recoveries_low_mediaB2016[filename]=get_media(recoveries_low)
+		recoveries_medium_mediaB2016[filename]=get_media(recoveries_medium)
+		recoveries_high_mediaB2016[filename]=get_media(recoveries_high)
+		chalenges_mediaB2016[filename]=get_media(chalenges)
+		chalenges_won_mediaB2016[filename]=get_media(chalenges_won)
+
 		for idx, y in enumerate(teamsB2016):
+
 			dicB2016[unidecode(str(y))]=idx
+
 			fn.write('\tnode [\n')
 			fn.write('\t\tid '+str(idx)+'\n')
-			for key in shots_mediaB2016:
-				if y in key:
-					fn.write('\t\tmedia '+'\"'+unidecode(str(shots_mediaB2016[key]))+'\"'+'\n')
 			fn.write('\t\tlabel '+'\"'+unidecode(str(y))+'\"'+'\n')
+			write_media(shots_mediaB2016,'shots',fn)
+			write_media(passes_mediaB2016,'passes',fn)
+			write_media(shots_acc_mediaB2016,'shots_target',fn)
+			write_media(passes_acc_mediaB2016,'passes_acc',fn)
+			write_media(shots_acc_porc_mediaB2016,'shots_target_porc',fn)
+			write_media(passes_acc_porc_mediaB2016,'passes_acc_porc',fn)
+			write_media(possesion_mediaB2016,'possesion',fn)
+			write_media(losses_mediaB2016,'losses',fn)
+			write_media(losses_low_mediaB2016,'losses_low',fn)
+			write_media(losses_medium_mediaB2016,'losses_medium',fn)
+			write_media(losses_high_mediaB2016,'losses_high',fn)
+			write_media(recoveries_mediaB2016,'recoveries',fn)
+			write_media(recoveries_low_mediaB2016,'recoveries_low',fn)
+			write_media(recoveries_medium_mediaB2016,'recoveries_medium',fn)
+			write_media(recoveries_high_mediaB2016,'recoveries_high',fn)
+			write_media(chalenges_mediaB2016,'chalenges',fn)
+			write_media(chalenges_won_mediaB2016,'chalenges_won',fn)
 			fn.write('\t]\n')	
 
 	elif competition[3] == 'Brazil. Serie C' and '3' in filename:
@@ -472,7 +897,6 @@ for filename in os.listdir(os.getcwd()):
 											fn1.write('\t\ttarget '+str(dicA2018[time_fora]) +'\n')
 											fn1.write('\t\tgols_casa '+str(gols_casa) +'\n')
 											fn1.write('\t\tgols_fora '+str(gols_fora) +'\n')
-											fn1.write('\t\tshots '+str(shots[2:7]) +'\n')
 											fn1.write('\t]\n')
 
 						elif '1' in filename:
