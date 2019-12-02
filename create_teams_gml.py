@@ -873,6 +873,7 @@ for filename in os.listdir(os.getcwd()):
 											fn1.write('\t\tgols_casa '+str(gols_casa) +'\n')
 											fn1.write('\t\tgols_fora '+str(gols_fora) +'\n')
 											fn1.write('\t]\n')
+										
 
 
 						elif '2' in filename:
@@ -890,14 +891,24 @@ for filename in os.listdir(os.getcwd()):
 								matches_game = time_casa + '-' + time_fora + str(gols_casa) + '>' + str(gols_fora)
 								if matches_game not in matches_resultA2018:
 									matches_resultA2018.append(matches_game)
-									for key in dicA2018:
-										if time_casa == key:
-											fn1.write('\tedge [\n')
-											fn1.write('\t\tsource '+str(dicA2018[key]) +'\n')
-											fn1.write('\t\ttarget '+str(dicA2018[time_fora]) +'\n')
-											fn1.write('\t\tgols_casa '+str(gols_casa) +'\n')
-											fn1.write('\t\tgols_fora '+str(gols_fora) +'\n')
-											fn1.write('\t]\n')
+									if gols_casa > gols_fora:
+										for key in dicA2018:
+											if time_casa == key:
+												fn1.write('\tedge [\n')
+												fn1.write('\t\tsource '+str(dicA2018[time_casa]) +'\n')
+												fn1.write('\t\ttarget '+str(dicA2018[time_fora]) +'\n')
+												fn1.write('\t\tgols_casa '+str(gols_casa) +'\n')
+												fn1.write('\t\tgols_fora '+str(gols_fora) +'\n')
+												fn1.write('\t]\n')
+									elif gols_fora > gols_casa:
+										for key in dicA2018:
+											if time_casa == key:
+												fn1.write('\tedge [\n')
+												fn1.write('\t\tsource '+str(dicA2018[time_fora]) +'\n')
+												fn1.write('\t\ttarget '+str(dicA2018[time_casa]) +'\n')
+												fn1.write('\t\tgols_casa '+str(gols_casa) +'\n')
+												fn1.write('\t\tgols_fora '+str(gols_fora) +'\n')
+												fn1.write('\t]\n')
 
 						elif '1' in filename:
 							fn1 = open('result_teams_brA2017.gml','a+')

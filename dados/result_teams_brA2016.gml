@@ -1,5 +1,6 @@
 graph [
 	directed 1
+	multigraph 1
 	node [
 		id 0
 		label "America Mineiro"
@@ -455,6 +456,12 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 4
+		target 0
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 5
 		target 0
 		gols_casa 1
@@ -485,6 +492,12 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 10
+		target 0
+		gols_casa 0
+		gols_fora 2
+	]
+	edge [
 		source 11
 		target 0
 		gols_casa 3
@@ -503,10 +516,22 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 16
+		target 0
+		gols_casa 0
+		gols_fora 2
+	]
+	edge [
 		source 17
 		target 0
 		gols_casa 2
 		gols_fora 1
+	]
+	edge [
+		source 18
+		target 0
+		gols_casa 1
+		gols_fora 2
 	]
 	edge [
 		source 19
@@ -527,6 +552,12 @@ graph [
 		gols_fora 1
 	]
 	edge [
+		source 5
+		target 0
+		gols_casa 0
+		gols_fora 3
+	]
+	edge [
 		source 6
 		target 0
 		gols_casa 3
@@ -537,6 +568,18 @@ graph [
 		target 0
 		gols_casa 1
 		gols_fora 0
+	]
+	edge [
+		source 8
+		target 0
+		gols_casa 0
+		gols_fora 2
+	]
+	edge [
+		source 9
+		target 0
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 10
@@ -569,9 +612,21 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 15
+		target 0
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
 		source 18
 		target 0
 		gols_casa 3
+		gols_fora 1
+	]
+	edge [
+		source 19
+		target 0
+		gols_casa 0
 		gols_fora 1
 	]
 	edge [
@@ -659,6 +714,12 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 10
+		target 7
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 4
 		target 7
 		gols_casa 1
@@ -683,6 +744,12 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 7
+		target 16
+		gols_casa 0
+		gols_fora 3
+	]
+	edge [
 		source 11
 		target 7
 		gols_casa 1
@@ -704,6 +771,12 @@ graph [
 		source 15
 		target 7
 		gols_casa 3
+		gols_fora 2
+	]
+	edge [
+		source 7
+		target 6
+		gols_casa 1
 		gols_fora 2
 	]
 	edge [
@@ -737,6 +810,12 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 6
+		target 9
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
 		source 11
 		target 9
 		gols_casa 2
@@ -752,6 +831,12 @@ graph [
 		source 12
 		target 9
 		gols_casa 3
+		gols_fora 2
+	]
+	edge [
+		source 9
+		target 15
+		gols_casa 1
 		gols_fora 2
 	]
 	edge [
@@ -792,9 +877,21 @@ graph [
 	]
 	edge [
 		source 9
+		target 6
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 9
 		target 5
 		gols_casa 3
 		gols_fora 0
+	]
+	edge [
+		source 9
+		target 10
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 9
@@ -833,22 +930,76 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 16
+		target 9
+		gols_casa 2
+		gols_fora 3
+	]
+	edge [
+		source 3
+		target 9
+		gols_casa 0
+		gols_fora 3
+	]
+	edge [
 		source 9
 		target 1
 		gols_casa 1
 		gols_fora 0
 	]
 	edge [
+		source 12
+		target 3
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 10
 		target 12
 		gols_casa 1
 		gols_fora 0
 	]
 	edge [
+		source 18
+		target 12
+		gols_casa 0
+		gols_fora 2
+	]
+	edge [
+		source 12
+		target 5
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 12
 		target 13
 		gols_casa 1
 		gols_fora 0
+	]
+	edge [
+		source 12
+		target 14
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 12
+		target 17
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 1
+		target 12
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 12
+		target 16
+		gols_casa 0
+		gols_fora 2
 	]
 	edge [
 		source 12
@@ -867,6 +1018,12 @@ graph [
 		target 2
 		gols_casa 3
 		gols_fora 0
+	]
+	edge [
+		source 12
+		target 6
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 15
@@ -893,6 +1050,12 @@ graph [
 		gols_fora 1
 	]
 	edge [
+		source 12
+		target 13
+		gols_casa 2
+		gols_fora 3
+	]
+	edge [
 		source 8
 		target 12
 		gols_casa 3
@@ -905,10 +1068,22 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 16
+		target 12
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 19
 		target 12
 		gols_casa 1
 		gols_fora 0
+	]
+	edge [
+		source 6
+		target 12
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 10
@@ -929,10 +1104,22 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 1
+		target 18
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 18
 		target 2
 		gols_casa 3
 		gols_fora 0
+	]
+	edge [
+		source 17
+		target 18
+		gols_casa 1
+		gols_fora 4
 	]
 	edge [
 		source 3
@@ -942,15 +1129,33 @@ graph [
 	]
 	edge [
 		source 18
+		target 19
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 18
 		target 11
 		gols_casa 1
 		gols_fora 0
+	]
+	edge [
+		source 4
+		target 18
+		gols_casa 1
+		gols_fora 3
 	]
 	edge [
 		source 18
 		target 13
 		gols_casa 1
 		gols_fora 0
+	]
+	edge [
+		source 8
+		target 18
+		gols_casa 0
+		gols_fora 2
 	]
 	edge [
 		source 1
@@ -971,10 +1176,22 @@ graph [
 		gols_fora 1
 	]
 	edge [
+		source 18
+		target 17
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
 		source 15
 		target 18
 		gols_casa 2
 		gols_fora 1
+	]
+	edge [
+		source 18
+		target 11
+		gols_casa 3
+		gols_fora 4
 	]
 	edge [
 		source 16
@@ -993,6 +1210,24 @@ graph [
 		target 8
 		gols_casa 4
 		gols_fora 0
+	]
+	edge [
+		source 8
+		target 5
+		gols_casa 2
+		gols_fora 4
+	]
+	edge [
+		source 19
+		target 8
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 10
+		target 8
+		gols_casa 0
+		gols_fora 2
 	]
 	edge [
 		source 1
@@ -1023,6 +1258,12 @@ graph [
 		target 8
 		gols_casa 3
 		gols_fora 0
+	]
+	edge [
+		source 8
+		target 13
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 8
@@ -1062,6 +1303,12 @@ graph [
 	]
 	edge [
 		source 8
+		target 2
+		gols_casa 0
+		gols_fora 2
+	]
+	edge [
+		source 8
 		target 15
 		gols_casa 3
 		gols_fora 0
@@ -1079,6 +1326,12 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 17
+		target 11
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 11
 		target 5
 		gols_casa 1
@@ -1094,6 +1347,12 @@ graph [
 		source 10
 		target 11
 		gols_casa 2
+		gols_fora 1
+	]
+	edge [
+		source 11
+		target 2
+		gols_casa 0
 		gols_fora 1
 	]
 	edge [
@@ -1118,6 +1377,18 @@ graph [
 		source 17
 		target 11
 		gols_casa 3
+		gols_fora 1
+	]
+	edge [
+		source 4
+		target 11
+		gols_casa 0
+		gols_fora 2
+	]
+	edge [
+		source 11
+		target 5
+		gols_casa 0
 		gols_fora 1
 	]
 	edge [
@@ -1146,9 +1417,21 @@ graph [
 	]
 	edge [
 		source 16
+		target 2
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 16
 		target 19
 		gols_casa 4
 		gols_fora 2
+	]
+	edge [
+		source 16
+		target 17
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 16
@@ -1176,6 +1459,12 @@ graph [
 	]
 	edge [
 		source 16
+		target 14
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 16
 		target 13
 		gols_casa 4
 		gols_fora 2
@@ -1185,6 +1474,12 @@ graph [
 		target 16
 		gols_casa 2
 		gols_fora 0
+	]
+	edge [
+		source 2
+		target 16
+		gols_casa 1
+		gols_fora 2
 	]
 	edge [
 		source 19
@@ -1199,10 +1494,28 @@ graph [
 		gols_fora 1
 	]
 	edge [
+		source 16
+		target 15
+		gols_casa 0
+		gols_fora 4
+	]
+	edge [
 		source 3
 		target 16
 		gols_casa 2
 		gols_fora 0
+	]
+	edge [
+		source 4
+		target 16
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 6
+		target 16
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 5
@@ -1229,6 +1542,12 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 10
+		target 14
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
 		source 13
 		target 14
 		gols_casa 1
@@ -1251,6 +1570,12 @@ graph [
 		target 14
 		gols_casa 3
 		gols_fora 2
+	]
+	edge [
+		source 14
+		target 1
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 15
@@ -1314,9 +1639,21 @@ graph [
 	]
 	edge [
 		source 4
+		target 19
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 4
 		target 5
 		gols_casa 3
 		gols_fora 0
+	]
+	edge [
+		source 4
+		target 17
+		gols_casa 1
+		gols_fora 2
 	]
 	edge [
 		source 4
@@ -1343,10 +1680,34 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 19
+		target 4
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 4
+		target 5
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 10
+		target 4
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
 		source 4
 		target 17
 		gols_casa 1
 		gols_fora 0
+	]
+	edge [
+		source 4
+		target 15
+		gols_casa 1
+		gols_fora 2
 	]
 	edge [
 		source 3
@@ -1367,6 +1728,12 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 6
+		target 19
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
 		source 1
 		target 19
 		gols_casa 2
@@ -1380,6 +1747,24 @@ graph [
 	]
 	edge [
 		source 19
+		target 3
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 10
+		target 19
+		gols_casa 0
+		gols_fora 2
+	]
+	edge [
+		source 19
+		target 5
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 19
 		target 15
 		gols_casa 3
 		gols_fora 0
@@ -1389,6 +1774,12 @@ graph [
 		target 19
 		gols_casa 2
 		gols_fora 1
+	]
+	edge [
+		source 1
+		target 19
+		gols_casa 2
+		gols_fora 4
 	]
 	edge [
 		source 2
@@ -1409,6 +1800,18 @@ graph [
 		gols_fora 1
 	]
 	edge [
+		source 2
+		target 3
+		gols_casa 0
+		gols_fora 3
+	]
+	edge [
+		source 3
+		target 17
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 15
 		target 3
 		gols_casa 3
@@ -1428,8 +1831,20 @@ graph [
 	]
 	edge [
 		source 3
+		target 13
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 3
 		target 1
 		gols_casa 3
+		gols_fora 2
+	]
+	edge [
+		source 17
+		target 3
+		gols_casa 1
 		gols_fora 2
 	]
 	edge [
@@ -1451,9 +1866,21 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 17
+		target 13
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 13
 		target 1
 		gols_casa 2
+		gols_fora 1
+	]
+	edge [
+		source 10
+		target 13
+		gols_casa 0
 		gols_fora 1
 	]
 	edge [
@@ -1470,9 +1897,27 @@ graph [
 	]
 	edge [
 		source 13
+		target 1
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 13
 		target 2
 		gols_casa 1
 		gols_fora 0
+	]
+	edge [
+		source 13
+		target 6
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 10
+		target 17
+		gols_casa 1
+		gols_fora 2
 	]
 	edge [
 		source 1
@@ -1488,6 +1933,12 @@ graph [
 	]
 	edge [
 		source 10
+		target 5
+		gols_casa 2
+		gols_fora 3
+	]
+	edge [
+		source 10
 		target 6
 		gols_casa 2
 		gols_fora 1
@@ -1497,6 +1948,12 @@ graph [
 		target 17
 		gols_casa 2
 		gols_fora 1
+	]
+	edge [
+		source 10
+		target 2
+		gols_casa 1
+		gols_fora 3
 	]
 	edge [
 		source 10
@@ -1515,6 +1972,12 @@ graph [
 		target 10
 		gols_casa 2
 		gols_fora 1
+	]
+	edge [
+		source 1
+		target 15
+		gols_casa 1
+		gols_fora 2
 	]
 	edge [
 		source 2
@@ -1559,10 +2022,22 @@ graph [
 		gols_fora 0
 	]
 	edge [
+		source 15
+		target 5
+		gols_casa 0
+		gols_fora 3
+	]
+	edge [
 		source 1
 		target 17
 		gols_casa 3
 		gols_fora 2
+	]
+	edge [
+		source 1
+		target 6
+		gols_casa 0
+		gols_fora 1
 	]
 	edge [
 		source 2
@@ -1578,6 +2053,12 @@ graph [
 	]
 	edge [
 		source 1
+		target 17
+		gols_casa 2
+		gols_fora 3
+	]
+	edge [
+		source 1
 		target 6
 		gols_casa 3
 		gols_fora 0
@@ -1587,6 +2068,12 @@ graph [
 		target 2
 		gols_casa 2
 		gols_fora 0
+	]
+	edge [
+		source 1
+		target 5
+		gols_casa 0
+		gols_fora 2
 	]
 	edge [
 		source 2
@@ -1607,6 +2094,12 @@ graph [
 		gols_fora 2
 	]
 	edge [
+		source 2
+		target 5
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
 		source 6
 		target 5
 		gols_casa 5
@@ -1620,14 +2113,20 @@ graph [
 	]
 	edge [
 		source 6
+		target 5
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 6
 		target 17
 		gols_casa 2
 		gols_fora 0
+	]
+	edge [
+		source 5
+		target 17
+		gols_casa 4
+		gols_fora 1
 	]
 ]
-	edge [
-		source 5
-		target 17
-		gols_casa 4
-		gols_fora 1
-	]
