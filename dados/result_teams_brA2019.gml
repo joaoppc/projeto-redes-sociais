@@ -1,5 +1,6 @@
 graph [
 	directed 1
+	multigraph 1
 	node [
 		id 0
 		label "Athletico Paranaense"
@@ -434,6 +435,18 @@ graph [
 	]
 	edge [
 		source 4
+		target 5
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 4
+		target 3
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 4
 		target 6
 		gols_casa 2
 		gols_fora 1
@@ -523,9 +536,27 @@ graph [
 		gols_fora 1
 	]
 	edge [
+		source 18
+		target 9
+		gols_casa 4
+		gols_fora 5
+	]
+	edge [
 		source 17
 		target 18
 		gols_casa 2
+		gols_fora 1
+	]
+	edge [
+		source 13
+		target 18
+		gols_casa 0
+		gols_fora 1
+	]
+	edge [
+		source 12
+		target 2
+		gols_casa 0
 		gols_fora 1
 	]
 	edge [
@@ -533,6 +564,18 @@ graph [
 		target 2
 		gols_casa 4
 		gols_fora 0
+	]
+	edge [
+		source 12
+		target 13
+		gols_casa 1
+		gols_fora 2
+	]
+	edge [
+		source 17
+		target 9
+		gols_casa 1
+		gols_fora 2
 	]
 	edge [
 		source 15
